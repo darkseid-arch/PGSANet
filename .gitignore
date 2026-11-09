@@ -1,0 +1,13 @@
+__pycache__/
+.pytest_cache/
+*.py[cod]
+.venv/
+data/
+runs/
+predictions/
+*.pt
+*.pth
+*.npy
+*.npz
+.DS_Store
+Thumbs.db
