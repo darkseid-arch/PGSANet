@@ -1,0 +1,42 @@
+{
+  "dataset": "sas",
+  "label_format": "rgb",
+  "prior_mode": "external",
+  "image_size": 256,
+  "seed": 42,
+  "batch_size": 8,
+  "epochs": 200,
+  "lr": 0.0006,
+  "weight_decay": 0.0001,
+  "restart_period": 20,
+  "lr_patience": 20,
+  "early_stop": 60,
+  "monitor": "mPA",
+  "loss_weights": [
+    1.0,
+    1.0,
+    0.1
+  ],
+  "model": {
+    "num_classes": 9,
+    "in_channels": 1,
+    "widths": [
+      32,
+      64,
+      128,
+      256
+    ],
+    "bands": 3,
+    "windows": [
+      3,
+      5
+    ],
+    "experts": 3,
+    "prior_channels": 3,
+    "dropout": 0.5,
+    "attention_grid": 16,
+    "use_sdcb": true,
+    "use_abda": true,
+    "use_pafe": true
+  }
+}
