@@ -1,0 +1,15 @@
+name: tests
+on: [push, pull_request]
+jobs:
+  cpu:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install -r requirements-dev.txt
+      - run: python -m pytest -q
+      - run: python tools/make_demo.py
+      - run: OMP_NUM_THREADS=2 MKL_NUM_THREADS=2 python train.py --config data/demo/config.json --train data/demo/train.json --val data/demo/val.json --output runs/demo --device cpu
+      - run: python evaluate.py --checkpoint runs/demo/best.pt --manifest data/demo/test.json --output runs/demo/test.json --device cpu
